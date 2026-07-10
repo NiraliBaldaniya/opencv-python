@@ -102,6 +102,36 @@ def grayscale():
 
         output(grayscaleimage, "Grayscale Image")
 
+def flip():
+        flip_image = image.copy()
+        flip_code = int(input("Enter flip code (0: vertical, 1: horizontal, -1: both): "))
+        flip_image = cv2.flip(flip_image, flip_code)
+
+        output(flip_image, "Flipped Image")
+ 
+def crop():
+        x = int(input("Enter x coordinate: "))
+        y = int(input("Enter y coordinate: "))
+        width = int(input("Enter crop width: "))
+        height = int(input("Enter crop height: "))
+
+        cropped_image = image[y:y+height, x:x+width]
+
+        output(cropped_image, "Cropped Image")
+
+def brightness():
+        brightness_image = image.copy()
+        beta = int(input("Enter brightness value (-100 to 100): "))
+        brightness_image = cv2.convertScaleAbs(brightness_image, alpha=1, beta=beta)
+
+        output(brightness_image, "Brightness Image")
+
+def constrat():
+        contrast_image = image.copy()
+        alpha = float(input("Enter contrast value (1.0-3.0): "))
+        contrast_image = cv2.convertScaleAbs(contrast_image, alpha=alpha, beta=0)
+
+        output(contrast_image, "Contrast Image")
 
 def output(image, window_name):
         print("1. Show Image")
@@ -133,7 +163,12 @@ if image is not None:
         print("5. Convert to Grayscale")
         print("6. Resize Image")
         print("7. Rotate Image")
-        print("8. Exit")
+        print("8. flip Image")
+        print("9. crop image")
+        print("10. add brightness")
+        print("11. adjust contrast")
+        print("12. Exit")
+
         option = int(input("enter your chosen number: "))
 
         if option == 1:
@@ -158,7 +193,19 @@ if image is not None:
              rotate()
 
         elif option == 8:
-            print("exit complete")
+             flip()
+
+        elif option == 9:
+             crop()
+            
+        elif option == 10:
+              brightness()
+
+        elif option == 11:
+              constrat()
+
+        elif option == 12:
+            print("exit successfully")
             break
         else:
             print("invalid option")
