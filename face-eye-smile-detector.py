@@ -4,7 +4,7 @@ face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 eye_cascade = cv2.CascadeClassifier("haarcascade_eye.xml")
 smile_cascade = cv2.CascadeClassifier("haarcascade_smile.xml")
 
-cap = cv2.VideoCapture('video.mp4')
+cap = cv2.VideoCapture(0)
 
 if not cap.isOpened():
     print("Could not open webcam.")
